@@ -19,24 +19,24 @@ function whatIsHappening() {
     var_dump($_SESSION);
     
 }
-
-whatIsHappening();
-
 // define variables and set to empty values
 $emailErr = $streetErr = $streetnumberErr = $zipcodeErr = $productsErr ="";
 $email= $street = $streetnumber = $zipcode = $products = "";
  
-
+$valid = true;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
-        $email = "Missing";
+        $valid = false;
+        $errors['email'] = "You must enter your email.";
+        
     }
-    else {
+    else  {
         $email = $_POST["email"];
     }
 
     if (empty($_POST["street"])) {
-        $street = "Missing";
+        $valid = false;
+        $errors['street'] = "You must enter your street.";
     }
     else {
         $street = $_POST["street"];
@@ -44,31 +44,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($_POST["streetnumber"]))  {
-        $streetnumber = "Missing";
+        $valid = false;
+        $errors['streetnumber'] = "You must enter your streetnumber.";
     }
     else {
         $streetnumber = $_POST["streetnumber"];
     }
 
     if (!isset($_POST["zipcode"])) {
-        $zipcode = "Only Number";
+        $valid = false;
+        $errors['zipcode'] = "Your Zipcode Only Number.";
     }
     else {
         $zipcode = $_POST["zipcode"];
     }
 
     if (empty($_POST["products"])) {
-        $products = "Missing";
+        $valid = true;
+        $errors['products'] = "You didnt choose your order .";
     }
     else {
         $products = $_POST["products"];
     }
 
    }
-
-
-
-
 
 function test_input($data) {
     $data = trim($data);
@@ -77,28 +76,25 @@ function test_input($data) {
     return $data;
   }
 
-  
 
-
-// TODO: provide some products (you may overwrite the example)
 
 $products = [
-    ['name' => 'Whiskey Sour', 'price' => 10],
-    ['name' => 'Bloody Caesar', 'price' =>9.5],
-    ['name' => 'Margarita', 'price' => 9],
-    ['name' => 'Sake', 'price' => 8],
     ['name' => 'Ramen From the chef', 'price' => 10.20],
     ['name' => 'Sashimi Salmon', 'price' => 8],
     ['name' => 'California Roll', 'price' => 9],
     ['name' => 'Scallop Roll', 'price' => 10],
     ['name' => 'Spicy Tuna', 'price' => 6],
+    ['name' => 'Whiskey Sour', 'price' => 10],
+    ['name' => 'Bloody Caesar', 'price' =>9.5],
+    ['name' => 'Margarita', 'price' => 9],
+    ['name' => 'Sake', 'price' => 8],
+    
    
 ];
-
-
-
-
-
+ 
 $totalValue = 0;
+foreach ($_POST['products'] as $a => $product) {
+    $totalValue += ($products[$a]['price']);
+}
 
 require 'form-view.php';

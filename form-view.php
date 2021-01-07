@@ -10,11 +10,12 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <title>Your fancy store</title>
+          <link rel="stylesheet" href="style.css">    
+<title>Your fancy store</title>
 </head>
 <body>
-    <div class="container jumbotron">
-        <h1 class="text-center text-muted "  >Order food in restaurant <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Cocktail & Sushi Bar"</h1>
+    <div class="container jumbotron" >
+        <h1 class="text-center text-muted "  >Order food In Our Cafe <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
         <nav class="mb-3 mt-3 ">
             <ul class="nav nav-pills">
                 <li class="nav-item">
@@ -76,9 +77,10 @@
 
         <button type="submit" class="btn btn-info">Order!</button>
     </form>
-    <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks.</footer>
+    <div class="text">
+    <footer>Your Total Order <strong>&euro; <?php echo $totalValue ?></strong></footer>
     <?php
-    echo "<h3>Your Input :</h3>";
+    echo "<h3>Your Input  :</h3>";
     echo $email;
     echo "<br>";
     echo $street;
@@ -89,10 +91,13 @@
     echo "<br>";
     $productChosen = array_keys($_POST["products"]);
     foreach($productChosen as $food){
-    echo "Your Order :"." "."<br>".($products[$food]["name"]) ;
+    echo "<br>" ($products[$food]["name"]) ;
+    
    };
    ?>
-</div>
+   </div>
+
+</div> 
 <style>
     footer {
         text-align: center;
