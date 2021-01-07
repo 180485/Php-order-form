@@ -87,7 +87,10 @@
     echo "<br>";
     echo $zipcode;
     echo "<br>";
-    echo $products;
+    $productChosen = array_keys($_POST["products"]);
+    foreach($productChosen as $food){
+    echo "Your Order :"." "."<br>".($products[$food]["name"]) ;
+   };
    ?>
 </div>
 <style>

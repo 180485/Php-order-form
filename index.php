@@ -17,10 +17,15 @@ function whatIsHappening() {
     var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
+    
 }
+
+whatIsHappening();
+
 // define variables and set to empty values
 $emailErr = $streetErr = $streetnumberErr = $zipcodeErr = $productsErr ="";
 $email= $street = $streetnumber = $zipcode = $products = "";
+ 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
@@ -35,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else {
         $street = $_POST["street"];
+        
     }
 
     if (empty($_POST["streetnumber"]))  {
@@ -51,7 +57,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $zipcode = $_POST["zipcode"];
     }
 
-}
+    if (empty($_POST["products"])) {
+        $products = "Missing";
+    }
+    else {
+        $products = $_POST["products"];
+    }
+
+   }
+
+
 
 
 
