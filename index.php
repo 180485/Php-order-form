@@ -26,7 +26,7 @@ $email= $street = $streetnumber = $zipcode = $products = "";
 $valid = true;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
-        $valid = false;
+        $emailErr= false;
         $errors['email'] = "You must enter your email.";
         
     }

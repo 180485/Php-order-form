@@ -10,19 +10,21 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+          
           <link rel="stylesheet" href="style.css">    
 <title>Your fancy store</title>
 </head>
 <body>
+   <div class="container">
     <div class="container jumbotron" >
-        <h1 class="text-center text-muted "  >Order food In Our Cafe <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
+        <h1 class="text-center text-danger "  >Order food In Our Cafe <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
         <nav class="mb-3 mt-3 ">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link active bg-info text-white" href="?food=1">Order Food</a>
+                    <a class="nav-link active bg-warning text-white" href="?food=1">Order Food</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-info" href="?food=0">Order Drunk</a>
+                    <a class="nav-link text-white" href="?food=0">Order Drink</a>
                 </li>
             </ul>
         </nav>
@@ -42,7 +44,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control">
+                    <input type="text" name="street" id="street" class="form-control 
+                    ">
                     <?php echo "<p class='text-danger'>$errStreet</p>";?>
                 </div>
                 <div class="form-group col-md-6">
@@ -75,7 +78,7 @@
             <?php endforeach; ?>
         </fieldset>
 
-        <button type="submit" class="btn btn-info">Order!</button>
+        <button type="submit" class="btn btn-warning">Order!</button>
     </form>
     <div class="text">
     <footer>Your Total Order <strong>&euro; <?php echo $totalValue ?></strong></footer>
@@ -96,7 +99,7 @@
    };
    ?>
    </div>
-
+</div>
 </div> 
 <style>
     footer {
