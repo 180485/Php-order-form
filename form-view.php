@@ -12,12 +12,12 @@
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
           
           <link rel="stylesheet" href="style.css">    
-<title>Your fancy store</title>
+<title>Sushi&Cocktail Bar</TH></title>
 </head>
 <body>
    <div class="container">
     <div class="container jumbotron" >
-        <h1 class="text-center text-danger "  >Order food In Our Cafe <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
+        <h1 class="text-center text-danger ">Order food In Our Cafe <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
         <nav class="mb-3 mt-3 ">
             <ul class="nav nav-pills">
                 <li class="nav-item">
@@ -28,12 +28,12 @@
                 </li>
             </ul>
         </nav>
-    <form method="post">
+        <form method="POST">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
                 <input type="text" id="email" name="email" class="form-control"/>
-                <?php echo "<p class='text-danger'>$errEmail</p>";?>
+                <span class="error text-danger">* <?php echo $emailErr; ?></span>
             </div>
             <div></div>
         </div>
@@ -46,24 +46,24 @@
                     <label for="street">Street:</label>
                     <input type="text" name="street" id="street" class="form-control 
                     ">
-                    <?php echo "<p class='text-danger'>$errStreet</p>";?>
+                    <span class="error text-danger">* <?php echo $streetErr; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
                     <input type="text" id="streetnumber" name="streetnumber" class="form-control">
-                    <?php echo "<p class='text-danger'>$errSnumber</p>";?>
+                    <span class="error text-danger">* <?php echo $numberErr; ?></span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
                     <input type="text" id="city" name="city" class="form-control">
-                    <?php echo "<p class='text-danger'>$errCity</p>";?>
+                    <span class="error text-danger">* <?php echo $cityErr; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
                     <input type="text" id="zipcode" name="zipcode" class="form-control">
-                    <?php echo "<p class='text-danger'>$errZipcode</p>";?>
+                    <span class="error text-danger">* <?php echo $zipcodeErr ;?></span>
                 </div>
             </div>
         </fieldset>
@@ -92,6 +92,7 @@
     echo "<br>";
     echo $zipcode;
     echo "<br>";
+    echo "<h4 style='color:red'>".$productsErr."</h4>";
     $productChosen = array_keys($_POST["products"]);
     foreach($productChosen as $food){
     echo "<br>" ($products[$food]["name"]) ;

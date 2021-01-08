@@ -3,7 +3,7 @@
 
 body {
     background-image: linear-gradient(
-        rgba(158, 255, 255, 0.438),
+        rgba(27, 49, 49, 0.438),
         rgba(170, 153, 128, 0.473)
       ),
       url("bg.jpg");
@@ -31,14 +31,22 @@ body {
 
   .container{
     width: 800px;
-    background-color:rgba(207, 169, 169, 0);
+    background-color:rgba(27, 25, 25, 0);
     font-family: 'Yeon Sung', cursive;
-    
-    
-    
     
   }
-   h1{
+   
+  
+  h1{
     font-family: 'Yeon Sung', cursive;
     
+   }
+
+   label{
+     color:gold;
+   }
+
+   legend {
+     color:black;
+     font-size: 4Opx;
    }

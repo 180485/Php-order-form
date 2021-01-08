@@ -1,73 +1,70 @@
 <?php
-
-// This file is your starting point (= since it's the index)
-// It will contain most of the logic, to prevent making a messy mix in the html
-
-// This line makes PHP behave in a more strict way
+/*declare(strict_types=1);
 declare(strict_types=1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1'); */
+
 
 // We are going to use session variables so we need to enable sessions
 session_start();
-function whatIsHappening() {
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
-    echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
-    
-}
-// define variables and set to empty values
-$emailErr = $streetErr = $streetnumberErr = $zipcodeErr = $productsErr ="";
-$email= $street = $streetnumber = $zipcode = $products = "";
- 
-$valid = true;
+
+
+
+
+
+// define variables and initialize with empty values
+$emailErr = $streetrErr = $numberErr = $cityErr = $ZipcodeErr = $productErr = "";
+$email = $street = $streetnumber = $city = $zipcode = $product = "";
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
-        $emailErr= false;
-        $errors['email'] = "You must enter your email.";
-        
+        $emailErr = "Missing";
     }
-    else  {
+    else {
         $email = $_POST["email"];
     }
 
     if (empty($_POST["street"])) {
-        $valid = false;
-        $errors['street'] = "You must enter your street.";
+        $streetErr = "Missing";
     }
     else {
         $street = $_POST["street"];
-        
     }
 
     if (empty($_POST["streetnumber"]))  {
-        $valid = false;
-        $errors['streetnumber'] = "You must enter your streetnumber.";
+        $numberErr = "Missing";
+
     }
+    
     else {
         $streetnumber = $_POST["streetnumber"];
-    }
+    
+    } 
+    if (empty($_POST["city"])) {
+        $cityErr = "Missing";
 
-    if (!isset($_POST["zipcode"])) {
-        $valid = false;
-        $errors['zipcode'] = "Your Zipcode Only Number.";
+    }
+    else {
+        $city = $_POST["city"];
+
+    }
+    
+    if (empty($_POST["zipcode"])) {
+        $zipcodeErr = "Missing";
     }
     else {
         $zipcode = $_POST["zipcode"];
-    }
 
+    }
     if (empty($_POST["products"])) {
-        $valid = true;
-        $errors['products'] = "You didnt choose your order .";
+        $productsErr = "You didnt choose your order .";
     }
     else {
         $products = $_POST["products"];
+ 
     }
-
-   }
+}
 
 function test_input($data) {
     $data = trim($data);
@@ -75,8 +72,6 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
   }
-
-
 
 $products = [
     ['name' => 'Ramen From the chef', 'price' => 10.20],
@@ -93,8 +88,8 @@ $products = [
 ];
  
 $totalValue = 0;
-foreach ($_POST['products'] as $a => $product) {
-    $totalValue += ($products[$a]['price']);
+foreach ($_POST['products'] as $i => $product) {
+    $totalValue += ($products[$i]['price']);
 }
 
 require 'form-view.php';
