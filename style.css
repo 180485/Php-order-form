@@ -13,7 +13,7 @@ body {
     
   }
 
-  .text{
+  /*.text{
       display: float;
       float: right;
       margin-top:-300px;
@@ -27,12 +27,12 @@ body {
       border: 1px solid rgb(233, 230, 230);
       border-radius: 3%;
       font-family: 'Yeon Sung', cursive;
-  }
+  }*/
 
   .container{
-    width: 800px;
-    background-color:rgba(27, 25, 25, 0);
+    
     font-family: 'Yeon Sung', cursive;
+    width:80%;
     
   }
    
@@ -43,10 +43,13 @@ body {
    }
 
    label{
-     color:gold;
+     color:rgb(19, 18, 14);
+     
    }
 
    legend {
      color:black;
      font-size: 4Opx;
    }
+
+   

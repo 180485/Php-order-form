@@ -18,13 +18,11 @@
    <div class="container">
     <div class="container jumbotron" >
         <h1 class="text-center text-danger ">Order food In Our Cafe <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
+        <?php echo $result; ?> 
         <nav class="mb-3 mt-3 ">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link active bg-warning text-white" href="?food=1">Order Food</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="?food=0">Order Drink</a>
+                    <a class="nav-link active bg-warning text-white" href="?food=1">Form Order</a>
                 </li>
             </ul>
         </nav>
@@ -32,7 +30,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" class="form-control"/>
+                <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>">
                 <span class="error text-danger">* <?php echo $emailErr; ?></span>
             </div>
             <div></div>
@@ -44,25 +42,24 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control 
-                    ">
-                    <span class="error text-danger">* <?php echo $streetErr; ?></span>
+                    <input type="text" name="street" id="street" class="form-control "value="<?php echo $street;?>">
+                    <span class="error text-danger">*<?php echo $streetErr; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control">
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control"  value="<?php echo $streetnumber;?>">
                     <span class="error text-danger">* <?php echo $numberErr; ?></span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control">
+                    <input type="text" id="city" name="city" class="form-control"  value="<?php echo $city;?>">
                     <span class="error text-danger">* <?php echo $cityErr; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control">
+                    <input type="text" id="zipcode" name="zipcode" class="form-control"  value="<?php echo $zipcode;?>">
                     <span class="error text-danger">* <?php echo $zipcodeErr ;?></span>
                 </div>
             </div>
@@ -70,36 +67,41 @@
 
         <fieldset>
             <legend>Products</legend>
-            <?php foreach ($products as $i => $product): ?>
+            <span class="error text-danger">* <?php echo $productErr ;?></span>
+            <div class="col-md-13">
+                    <div class="row g-3">
+                    <?php foreach ($products as $i => $product): ?>
+                
+                    <div class="col-md-3">
+                        <img src="<?php echo $product['image'] ?>" width="150" width="150">
                 <label>
-					<?php // <?p= is equal to <?php echo ?>
-                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
+                    <?php // <?p= is equal to <?php echo ?>
+                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?>
                     &euro; <?= number_format($product['price'], 2) ?></label><br />
+                    </div>
             <?php endforeach; ?>
+        </div>
+        </div>
         </fieldset>
 
         <button type="submit" class="btn btn-warning">Order!</button>
     </form>
     <div class="text">
     <footer>Your Total Order <strong>&euro; <?php echo $totalValue ?></strong></footer>
-    <?php
-    echo "<h3>Your Input  :</h3>";
-    echo $email;
-    echo "<br>";
-    echo $street;
-    echo "<br>";
-    echo $streetnumber;
-    echo "<br>";
-    echo $zipcode;
-    echo "<br>";
-    echo "<h4 style='color:red'>".$productsErr."</h4>";
-    $productChosen = array_keys($_POST["products"]);
-    foreach($productChosen as $food){
-    echo "<br>" ($products[$food]["name"]) ;
+   </div>
+   <?php
+          echo $email."<br>";
+          echo $street." ";
+          echo $streetnumber." ";
+          echo $city." ";
+          echo $zipcode." "; 
+          echo "<br>";
+         $productChosen =($_POST["products"]);
+         foreach($productChosen as $i){
+         echo "<br>" ($products[$i]["name"]) ;
     
    };
-   ?>
-   </div>
+    ?>
 </div>
 </div> 
 <style>
