@@ -10,15 +10,20 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-          
+          <link rel="preconnect" href="https://fonts.gstatic.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com">
+          <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap" rel="stylesheet">
+
           <link rel="stylesheet" href="style.css">    
 <title>Sushi&Cocktail Bar</TH></title>
 </head>
 <body>
    <div class="container">
     <div class="container jumbotron" >
-        <h1 class="text-center text-danger ">Order food In Our Cafe <i class="fas fa-glass-cheers"></i> <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
-        <?php echo $result; ?> 
+        <h1 class="text-center text-danger ">Order food In Our Cafe <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
+        <div class="warning">
+            <?php echo $result; ?> 
+        </div>
         <nav class="mb-3 mt-3 ">
             <ul class="nav nav-pills">
                 <li class="nav-item">
@@ -27,7 +32,7 @@
             </ul>
         </nav>
         <form method="POST">
-        <div class="form-row">
+        <div class="form-row" >
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
                 <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>">
@@ -84,24 +89,30 @@
         </div>
         </fieldset>
 
-        <button type="submit" class="btn btn-warning">Order!</button>
+        <button type="submit" name="order-now" class="btn btn-warning">Order!</button>
     </form>
     <div class="text">
     <footer>Your Total Order <strong>&euro; <?php echo $totalValue ?></strong></footer>
    </div>
+   <div class ="text">
    <?php
-          echo $email."<br>";
-          echo $street." ";
-          echo $streetnumber." ";
-          echo $city." ";
-          echo $zipcode." "; 
-          echo "<br>";
-         $productChosen =($_POST["products"]);
-         foreach($productChosen as $i){
-         echo "<br>" ($products[$i]["name"]) ;
-    
-   };
+          $productChosen = array_keys($_POST["products"]);
+          foreach($productChosen as $food){
+          echo ($products[$food]["name"])."<br />" ;
+          
+
+    }
+    echo "<br>";
+    echo $text."<br />";
+    echo $email."<br>";
+    echo $street." ";
+    echo $streetnumber." ";
+    echo $city." ";
+    echo $zipcode." "; 
+   
+        
     ?>
+   
 </div>
 </div> 
 <style>

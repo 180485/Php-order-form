@@ -1,21 +1,35 @@
 <?php
-declare(strict_types=1);
-declare(strict_types=1);
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
 
+// Use this function when you need to need an overview of these variables
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
+
+}
 
 // We are going to use session variables so we need to enable sessions
 session_start();
 
-
-
-
-
 // define variables and initialize with empty values
-$emailErr = $streetrErr = $numberErr = $cityErr = $ZipcodeErr = $productErr = "";
+//$email = $_SESSION['email'] = $_POST['email'];
+//$street = $_SESSION['street'] = $_POST['street'];
+//$streetnumber = $_SESSION['streetnumber'] = $_POST['streetnumber'];
+//$city = $_SESSION['city'] = $_POST['city'];
+//$zipcode = $_SESSION['zipcode'] = $_POST['zipcode'];
+
+
+
+$emailErr = $streetErr = $numberErr = $cityErr = $zipcodeErr = $productErr = "";
 $email = $street = $streetnumber = $city = $zipcode = $product = "";
 $_SESSION["street"] = $_SESSION["streetnumber"] = $_SESSION["city"] = "";
+$result="";
+$text="Your Input : ";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["email"])) {
@@ -62,27 +76,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($_POST["products"])) {
-        $productsErr = "You didnt choose your order .";
+        $productErr = "Please Choose your Product ";
     }
     else {
         $products = $_POST["products"];
- 
     }
+      
+        
+
     if (!empty($_POST["email"]) && !empty($_POST["street"]) && !empty($_POST["streetnumber"]) && !empty($_POST["city"]) && !empty($_POST["zipcode"])) {
-        $result = '<div class="alert alert-success" role="alert">Your order is submitted, Thank You</div>';
+        $result = '<div class="alert alert-success" role="alert">Your order is been Processed , Thank You ! </div>';
     } else {
         $result = '<div class="alert alert-danger" role="alert">Please fill in Form Order</div>';
     }
-    if(isset($_POST["order-now"])){
-        
-        $_SESSION["street"] = $_POST["street"] ;
-        $_SESSION["streetnumber"] = $_POST["streetnumber"];
-        $_SESSION["city"] = $_POST["city"];
+    
+
 }
-}
-
-
-
 
 function test_input($data) {
     $data = trim($data);
@@ -92,11 +101,11 @@ function test_input($data) {
   }
 
   $products = [
-    ['name' => 'Salmon Roll', 'price' => 8,'image' => 'https://i.imgur.com/rwEV7ZP.jpg'],
-    ['name' => 'Negitoru Sushi', 'price' => 9,'image' => 'https://i.imgur.com/A6LV0rF.jpg'],
+    ['name' => 'Negitoru Sushi', 'price' => 8,'image' => 'https://i.imgur.com/rwEV7ZP.jpg'],
+    ['name' => ' Sake Nigiri', 'price' => 9,'image' => 'https://i.imgur.com/A6LV0rF.jpg'],
     ['name' => 'Salmon Roll', 'price' => 8,'image' => 'https://i.imgur.com/VwNZ6JE.jpeg'],
     ['name' => 'Variaty Sushi', 'price' => 25,'image' => 'https://i.imgur.com/QwEq1g2.jpg'],
-    ['name' => 'Wisket Sour', 'price' => 10,'image' => 'https://i.imgur.com/soXNsbe.jpeg'],
+    ['name' => 'Wiskey Sour', 'price' => 10,'image' => 'https://i.imgur.com/soXNsbe.jpeg'],
     ['name' => 'Dragon Fruits Margarita', 'price' =>9.5,'image' => 'https://i.imgur.com/ufq0OuO.jpg'],
     ['name' => 'Moscow Mule', 'price' => 9,'image' => 'https://i.imgur.com/DGG0IhR.jpg'],
     ['name' => 'whipped vodka ', 'price' => 9,'image' => 'https://i.imgur.com/VNPWLlH.jpeg'],
