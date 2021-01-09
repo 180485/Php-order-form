@@ -11,18 +11,13 @@ function whatIsHappening() {
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
 
+
 }
+
+whatIsHappening();
 
 // We are going to use session variables so we need to enable sessions
 session_start();
-
-// define variables and initialize with empty values
-//$email = $_SESSION['email'] = $_POST['email'];
-//$street = $_SESSION['street'] = $_POST['street'];
-//$streetnumber = $_SESSION['streetnumber'] = $_POST['streetnumber'];
-//$city = $_SESSION['city'] = $_POST['city'];
-//$zipcode = $_SESSION['zipcode'] = $_POST['zipcode'];
-
 
 
 $emailErr = $streetErr = $numberErr = $cityErr = $zipcodeErr = $productErr = "";
@@ -32,6 +27,8 @@ $result="";
 $text="Your Input : ";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    //email
     if (empty($_POST["email"])) {
         $emailErr = "Email is Required";
     }
@@ -39,12 +36,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
     }
 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format";
+      }
+
+
+    //street
+
     if (empty($_POST["street"])) {
         $streetErr = " Street is Required";
     }
     else {
         $street = $_POST["street"];
     }
+
+    //street Number
 
     if (empty($_POST["streetnumber"]))  {
         $numberErr = "Street number is Required";
@@ -55,6 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $streetnumber = $_POST["streetnumber"];
     
     } 
+
+    //city
     if (empty($_POST["city"])) {
         $cityErr = "city is Required";
 
@@ -63,6 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $city = $_POST["city"];
 
     }
+
+    //Zipcode
     
     if (empty($_POST["zipcode"])) {
         $zipcodeErr = "Email is Required";
@@ -71,9 +81,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $zipcode = $_POST["zipcode"];
 
     }
+
     if (!preg_match("/^[1-9][0-9]*$/", $zipcode)) {
         $zipcodeErr = "Only numbers allowed";
     }
+
+    //product
 
     if (empty($_POST["products"])) {
         $productErr = "Please Choose your Product ";
@@ -82,10 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $products = $_POST["products"];
     }
       
-        
+    //showing error and approved Message 
 
-    if (!empty($_POST["email"]) && !empty($_POST["street"]) && !empty($_POST["streetnumber"]) && !empty($_POST["city"]) && !empty($_POST["zipcode"])) {
-        $result = '<div class="alert alert-success" role="alert">Your order is been Processed , Thank You ! </div>';
+    if (!empty($_POST["email"]) && !empty($_POST["street"]) && !empty($_POST["streetnumber"]) && !empty($_POST["city"]) && !empty($_POST["zipcode"]) && !empty($_POST["products"])){
+        $result = '<div class="alert alert-success" role="alert">Thank you! Your order is submitted.! </div>';
     } else {
         $result = '<div class="alert alert-danger" role="alert">Please fill in Form Order</div>';
     }
@@ -101,14 +114,14 @@ function test_input($data) {
   }
 
   $products = [
-    ['name' => 'Negitoru Sushi', 'price' => 8,'image' => 'https://i.imgur.com/rwEV7ZP.jpg'],
-    ['name' => ' Sake Nigiri', 'price' => 9,'image' => 'https://i.imgur.com/A6LV0rF.jpg'],
-    ['name' => 'Salmon Roll', 'price' => 8,'image' => 'https://i.imgur.com/VwNZ6JE.jpeg'],
-    ['name' => 'Variaty Sushi', 'price' => 25,'image' => 'https://i.imgur.com/QwEq1g2.jpg'],
-    ['name' => 'Wiskey Sour', 'price' => 10,'image' => 'https://i.imgur.com/soXNsbe.jpeg'],
-    ['name' => 'Dragon Fruits Margarita', 'price' =>9.5,'image' => 'https://i.imgur.com/ufq0OuO.jpg'],
-    ['name' => 'Moscow Mule', 'price' => 9,'image' => 'https://i.imgur.com/DGG0IhR.jpg'],
-    ['name' => 'whipped vodka ', 'price' => 9,'image' => 'https://i.imgur.com/VNPWLlH.jpeg'],
+    ['name' => 'Sushi set with tuna salmon ', 'price' => 8,'image' => 'https://image.freepik.com/free-photo/sushi-set-with-tuna-salmon-vegetables-ginger-wasabi-side-view_141793-15530.jpg'],
+    ['name' => ' Sake Nigiri', 'price' => 9,'image' => 'https://image.freepik.com/free-photo/sushi-roll-philadelphia-with-salmon-avocado-cream-cheese-sushi-menu-japanese-food-top-view_89816-11548.jpg'],
+    ['name' => 'Japanese Dumpling ', 'price' => 8,'image' => 'https://image.freepik.com/free-photo/high-angle-japanese-dumplings-composition_23-2148809867.jpg'],
+    ['name' => 'California Roll', 'price' => 25,'image' => 'https://image.freepik.com/free-photo/sushi-set-nigiri-sushi-rolls-served-black-stone-slate_135427-4812.jpg'],
+    ['name' => 'Wiskey Sour', 'price' => 10,'image' => 'https://image.freepik.com/free-photo/blue-lagoon-ina-glass-with-frozen-steam_114579-2193.jpg'],
+    ['name' => ' Margarita', 'price' =>9.5,'image' => 'https://image.freepik.com/free-photo/red-cocktail-with-peeled-orange-skin-minced-ice-cubes_114579-3394.jpg'],
+    ['name' => 'Moscow Mule', 'price' => 9,'image' => 'https://image.freepik.com/free-photo/lemon-cocktail-with-green-table_140725-4787.jpg'],
+    ['name' => 'whipped vodka ', 'price' => 9,'image' => 'https://image.freepik.com/free-photo/cocktail-with-lemon-slices-ice-cubes-mint_141793-581.jpg'],
    
 ];
  

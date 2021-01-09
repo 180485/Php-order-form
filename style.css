@@ -2,10 +2,10 @@
 
 body {
     background-image: linear-gradient(
-        rgba(87, 122, 122, 0.438),
+        rgba(87, 122, 122, 0.336),
         rgba(170, 153, 128, 0.473)
       ),
-      url("bg1.jpg");
+      url("bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -14,7 +14,7 @@ body {
   .container.jumbotron{
     
     font-family: 'Yeon Sung', cursive;
-    background-color: rgba(17, 11, 11, 0.829);
+    background-color: rgba(22, 15, 15, 0.836);
     width:900px;
    
   }
@@ -41,3 +41,14 @@ body {
      font-size: 40px;
      font-family: sans-serif;
    }
+
+ .image{
+  transition: transform .4s;
+  padding:20px;
+ }
+ 
+
+ .image:hover {
+  transform: scale(1.3); 
+}
+

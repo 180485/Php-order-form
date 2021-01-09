@@ -47,12 +47,12 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control "value="<?php echo $street;?>">
+                    <input type="text" name="street" id="street" class="form-control " value="<?php echo $street;?>">
                     <span class="error text-danger">*<?php echo $streetErr; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control"  value="<?php echo $streetnumber;?>">
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control"   value="<?php echo $streetnumber;?>">
                     <span class="error text-danger">* <?php echo $numberErr; ?></span>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control"  value="<?php echo $zipcode;?>">
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $zipcode;?>">
                     <span class="error text-danger">* <?php echo $zipcodeErr ;?></span>
                 </div>
             </div>
@@ -77,8 +77,8 @@
                     <div class="row g-3">
                     <?php foreach ($products as $i => $product): ?>
                 
-                    <div class="col-md-3">
-                        <img src="<?php echo $product['image'] ?>" width="150" width="150">
+                    <div class=" image col-md-3">
+                        <img src="<?php echo $product['image'] ?>" width="150" width="240">
                 <label>
                     <?php // <?p= is equal to <?php echo ?>
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?>
@@ -94,6 +94,8 @@
     <div class="text">
     <footer>Your Total Order <strong>&euro; <?php echo $totalValue ?></strong></footer>
    </div>
+
+   
    <div class ="text">
    <?php
           $productChosen = array_keys($_POST["products"]);
