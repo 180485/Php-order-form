@@ -18,27 +18,34 @@
 <title>Sushi&Cocktail Bar</TH></title>
 </head>
 <body>
+
    <div class="container">
     <div class="container jumbotron" >
         <h1 class="text-center text-danger ">Order food In Our Cafe <br /> "The YOLO - Sushi & Cocktail Bar"</h1>
         <div class="warning">
-            <?php echo $result; ?> 
+            <?php echo $result;?> 
         </div>
-        <nav class="mb-3 mt-3 ">
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link active bg-warning text-white" href="?food=1">Form Order</a>
+          <nav class="nav">
+             <ul class="nav">
+                <li class="nav-item ">
+                     <a class="nav-link active  text-warning" href="?food=0">Order food</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link   text-warning" href="?drinks=1">Order drinks</a>
+             </li>
             </ul>
         </nav>
-        <form method="POST">
+    <form method="post">
         <div class="form-row" >
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>">
+                <input type="text" id="email" name="email" class="form-control" value="<?php 
+                if (isset($_SESSION["email"]) && ! empty($_SESSION["email"])) {
+                 echo $_SESSION["email"];
+
+                };?>">
                 <span class="error text-danger">* <?php echo $emailErr; ?></span>
             </div>
-            <div></div>
         </div>
 
         <fieldset>
@@ -47,24 +54,39 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control " value="<?php echo $street;?>">
+                    <input type="text" name="street" id="street" class="form-control " value="<?php 
+                if (isset($_SESSION["street"]) && ! empty($_SESSION["street"])) {
+                 echo $_SESSION["street"];
+
+                };?>">
                     <span class="error text-danger">*<?php echo $streetErr; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control"   value="<?php echo $streetnumber;?>">
-                    <span class="error text-danger">* <?php echo $numberErr; ?></span>
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control"   value="<?php 
+                if (isset($_SESSION["streetnumber"]) && ! empty($_SESSION["streetnumber"])) {
+                 echo $_SESSION["streetnumber"];
+
+                };?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control"  value="<?php echo $city;?>">
+                    <input type="text" id="city" name="city" class="form-control"   value="<?php 
+                if (isset($_SESSION["city"]) && ! empty($_SESSION["city"])) {
+                 echo $_SESSION["city"];
+
+                };?>">
                     <span class="error text-danger">* <?php echo $cityErr; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $zipcode;?>">
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php 
+                if (isset($_SESSION["zipcode"]) && ! empty($_SESSION["zipcode"])) {
+                 echo $_SESSION["zipcode"];
+
+                };?>">
                     <span class="error text-danger">* <?php echo $zipcodeErr ;?></span>
                 </div>
             </div>
@@ -89,38 +111,34 @@
         </div>
         </fieldset>
 
-        <button type="submit" name="order-now" class="btn btn-warning">Order!</button>
+        <button type="submit" name="order" class="btn btn-warning">Order!</button>
     </form>
-    <div class="text">
-    <footer>Your Total Order <strong>&euro; <?php echo $totalValue ?></strong></footer>
-   </div>
+    
 
    
    <div class ="text">
-   <?php
-          $productChosen = array_keys($_POST["products"]);
-          foreach($productChosen as $food){
-          echo ($products[$food]["name"])."<br />" ;
-          
 
+   <?php
+   echo "Total Order :"."&euro;". $totalValue."<br />";  
+    $productChosen = array_keys($_POST["products"]);
+    foreach($productChosen as $food){
+    echo ($products[$food]["name"])."<br />" ;
+          
     }
+
+    echo "<P>Order Processed at ";
+    echo date("H:i, jS F");
     echo "<br>";
     echo $text."<br />";
     echo $email."<br>";
     echo $street." ";
     echo $streetnumber." ";
     echo $city." ";
-    echo $zipcode." "; 
-   
-        
+    echo $zipcode." ";      
+    
     ?>
-   
-</div>
 </div> 
 <style>
-    footer {
-        text-align: center;
-    }
 </style>
 </body>
 </html>
