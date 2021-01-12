@@ -1,10 +1,24 @@
 <?php
+/*function whatIsHappening//() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
+
+
+}*/
+
+//whatIsHappening(); 
 session_start();
 
 $emailErr = $streetErr = $numberErr = $cityErr = $zipcodeErr = $productErr = "";
 $email = $street = $streetnumber = $city = $zipcode = $product = "";
 $result="";
-$text="Your Input : ";
+$text="Delivery To : ";
 $order_text="Your order is :";
 
 if (isset($_POST["order"])) {
@@ -90,9 +104,9 @@ if (isset($_POST["order"])) {
     //showing error and approved Message 
 
     if (!empty($_POST["email"]) && !empty($_POST["street"]) && !empty($_POST["streetnumber"]) && !empty($_POST["city"]) && !empty($_POST["zipcode"]) && !empty($_POST["products"])){
-        $result = '<div class="alert alert-success" role="alert">Thank you! Your order is submitted !  at </div>';
+        $result = '<div class="alert alert-success" role="alert">Thank you! Your order is submitted ! </div>';
     } else {
-        $result = '<div class="alert alert-danger" role="alert">Please fill in Form Order</div>';
+        $result = '<div class="alert alert-danger" role="alert"> ERORR ! Please fill in Form Order</div>';
     }
     
 
@@ -146,17 +160,3 @@ foreach ($_POST['products'] as $i => $value) {
 
 require 'form-view.php';
 
-function whatIsHappening() {
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
-    echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
-
-
-}
-
-whatIsHappening();

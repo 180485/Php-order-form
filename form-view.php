@@ -28,10 +28,10 @@
           <nav class="nav">
              <ul class="nav">
                 <li class="nav-item ">
-                     <a class="nav-link active  text-warning" href="?food=0">Order food</a>
+                     <a class="nav-link active  text-warning" href="?food=0" <?php if( $products == 'food') echo 'class="active"'?>>Order food</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link   text-warning" href="?drinks=1">Order drinks</a>
+                    <a class="nav-link   text-warning" href="?drinks=1"<?php if( $products == 'drinks') echo 'class="active"'?>>Order drinks</a>
              </li>
             </ul>
         </nav>
@@ -122,10 +122,10 @@
    echo "Total Order :"."&euro;". $totalValue."<br />";  
     $productChosen = array_keys($_POST["products"]);
     foreach($productChosen as $food){
-    echo ($products[$food]["name"])."<br />" ;
+    echo "<li>".($products[$food]["name"])." € "." ".($products[$food]["price"])."<br />"."</li> ";
           
     }
-
+    echo "<br>";
     echo "<P>Order Processed at ";
     echo date("H:i, jS F");
     echo "<br>";
