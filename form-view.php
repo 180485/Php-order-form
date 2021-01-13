@@ -101,7 +101,8 @@
                 
                     <div class=" image col-md-3">
                         <img src="<?php echo $product['image'] ?>" width="150" width="240">
-                <label>
+                
+                    <label>
                     <?php // <?p= is equal to <?php echo ?>
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?>
                     &euro; <?= number_format($product['price'], 2) ?></label><br />

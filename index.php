@@ -152,7 +152,7 @@ function test_input($data) {
 }
 
 
- 
+
 $totalValue = 0;
 foreach ($_POST['products'] as $i => $value) {
     $totalValue += ($products[$i]['price']);
