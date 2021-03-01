@@ -7,5 +7,5 @@
 - Think of some products to sell (feel free to be creative) and update the products array with these.
 - Check if all the products & prices are currently visible in the form.
 
-#Live Demo
+# Live Demo
 ![](order-form.gif)
