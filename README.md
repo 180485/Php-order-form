@@ -10,7 +10,7 @@
 # Live Demo
 ![](order-form.gif)
 
-# TOOls and Tech
+# Tools and Tech
 - Visual Studio Code
 - Markdown
 - Php
